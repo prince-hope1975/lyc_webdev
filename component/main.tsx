@@ -65,6 +65,7 @@ const Main = ({ style }: { style: MotionStyle }) => {
             >
               <Fashion />
             </motion.div>
+            {/* @ts-ignore */}
             <motion.div onClick={()=>setState(!state)} whileHover={(style = { scale: 1.3 })}>
               <LZYutes />
             </motion.div>

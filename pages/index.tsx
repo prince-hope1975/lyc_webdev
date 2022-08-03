@@ -33,6 +33,7 @@ const Home: NextPage = () => {
           <nav className={styles.nav}>
             {/* @ts-ignore */}
             <div className={styles.button_group}>
+              {/* @ts-ignore */}
               <IoChevronBackOutline onClick={() => setState(!state)} />
               <AiOutlineMenu onClick={toggleModal} />
             </div>
@@ -53,6 +54,8 @@ const Home: NextPage = () => {
               </div>
             </div>
           )}
+          {/* @ts-ignore */}
+
           <Main
           //  style={{position:animate?"absolute": "relative"}}
           />
@@ -77,14 +80,13 @@ const Home: NextPage = () => {
               </p>
 
               <div className={styles.carousell}>
-
-                {
-                  [0,0,0,0,0].map(()=>{
-                    return <div >
-                      <Image src={"/avatar3.svg"}  width={100} height={100}/>
+                {[0, 0, 0, 0, 0].map((_, index) => {
+                  return (
+                    <div key={index}>
+                      <Image src={"/avatar3.svg"} width={100} height={100} />
                     </div>
-                  })
-                }
+                  );
+                })}
               </div>
             </div>
           </>
