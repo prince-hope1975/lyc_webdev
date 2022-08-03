@@ -50,12 +50,11 @@ const Home: NextPage = () => {
             <div className={styles.woman}>
               <Image src={"/avatar3.svg"} width={100} height={400} />
               <div className={styles.masked}>
-                <Image src={"/masked.svg"} width={100} height={300} />
+                <Image priority src={"/masked.svg"} width={100} height={300} />
               </div>
             </div>
           )}
           {/* @ts-ignore */}
-
           <Main
           //  style={{position:animate?"absolute": "relative"}}
           />
@@ -73,7 +72,7 @@ const Home: NextPage = () => {
                 who are barred with alack of opportunities and resources but go
                 ahead and make it anyways. Lzyutesclub is a community based
                 project with the aim of providing its members the facilities
-                needed to show it’s untapped and unique talents to the world.
+                needed to show {"it's"} untapped and unique talents to the world.
                 Our goal is to provide grants, mentorship, and a platform for
                 youths in Nigeria and all of over globe who have been shunned by
                 a condescending society.
