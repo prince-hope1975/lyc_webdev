@@ -1,15 +1,15 @@
 import React, { PropsWithChildren } from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.scss";
-import { motion } from "framer-motion";
+import styles from "../styles/Main.module.scss";
+import { motion, MotionStyle } from "framer-motion";
 import Link from "next/link";
 import Sign from "../svgs/sign";
-export const Home = () => {
+
+export const Main = ({ style }: { style: MotionStyle }) => {
   return (
-    <motion.main className={styles.main}>
+    <motion.main className={styles.main} style={style}>
       <header className={styles.header}>
         <div className={styles.img}>
           <Image src={"/logo.svg"} width={100} height={100} />
@@ -60,7 +60,7 @@ export const Home = () => {
         <Image src={"/avatar3.svg"} width={100} height={100} /> */}
     </motion.main>
   );
-}
+};
 const CustomLink = ({
   children,
   className,
