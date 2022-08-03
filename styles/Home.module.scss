@@ -38,9 +38,15 @@
 
       //   max-width: 300px;
       height: clamp(300px, 50vh, calc(40vh - 4rem));
-      //   aspect-ratio: 0.5;
       margin: 0 auto;
-      //   background: blue;
+    }
+    .position{
+      position: absolute;
+      bottom: 4%;
+      right:16%;
+      width: 40%;
+      height: 30%;
+      // background: red;
     }
     .lzyutes_and_sign {
       height: 100%;
