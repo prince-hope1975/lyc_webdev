@@ -109,7 +109,7 @@ const Home: NextPage = () => {
                     if (index === 2 || index ===6) styless = `${styles.right} ${styless}`;
 
                     return (
-                        <div className={styless}>
+                        <div className={styless}key={index}>
                           <Item /> 
                         </div>
                     
