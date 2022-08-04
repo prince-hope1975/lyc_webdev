@@ -109,20 +109,18 @@
 
     .roadMap {
       text-align: center;
-        border-bottom: 1px solid hsl(0, 0%, 100%, 0.4);
-      
+      border-bottom: 1px solid hsl(0, 0%, 100%, 0.4);
 
-    .roadMap_item {
-      >div>div{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        // background: red;
-        text-align: center;
-        max-width: 10rem;
-      }
-      margin-top: 2rem;
+      .roadMap_item {
+        > div > div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          max-width: 10rem;
+        }
+        margin-top: 2rem;
         padding: 0 1rem;
 
         .left {
@@ -133,7 +131,6 @@
           align-items: center;
           justify-content: center;
           // padding: .5rem;
-
         }
         .right {
           justify-content: end;
