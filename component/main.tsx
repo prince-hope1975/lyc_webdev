@@ -47,7 +47,7 @@ const Main = ({ style }: { style?: MotionStyle }) => {
 
       <section className={styles.main_section}>
         <div className={`${styles.home_image} ${state && styles.position}`}>
-          <Image priority src={"/main.svg"} width={100} height={500} />
+          <Image  src={"/main.png"} width={1000} height={1000} />
         </div>
         <AnimatePresence>
           {!state && (

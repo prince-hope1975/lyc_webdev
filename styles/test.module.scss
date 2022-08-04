@@ -1,7 +1,7 @@
 .container {
   .main {
     padding-top: 1rem;
-     .nav {
+    .nav {
       display: flex;
       flex-direction: column;
       padding: 1rem;
@@ -53,57 +53,92 @@
       z-index: 11;
       .woman {
         position: relative;
-        width: 100%;
+        width: 84%;
+        margin: auto;
         height: 380px;
         display: flex;
         flex-direction: column;
       }
       .masked {
         position: absolute;
-        height: 6rem;
+        height: 6.1rem;
         display: flex;
         z-index: 12;
         // top: 18%;
-        left: 38%;
-        bottom: -1rem;
+        left: 39%;
+        bottom: -1.3rem;
       }
     }
 
-    .about{
-        position: relative;
-        h2{
-            padding: 0;
-            padding-top: 3rem;
-            font-size: 1.2rem;
-            text-align: center;
+    .about {
+      position: relative;
+      h2 {
+        padding: 0;
+        padding-top: 3rem;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      p {
+        padding: 0 2rem;
+        font-weight: 300;
+        font-size: 0.89rem;
+        line-height: 1.35rem;
+      }
+      .mint {
+        position: absolute;
+        right: 0;
+        top: 0-10%;
+      }
+      .carousell {
+        height: 12rem;
+        overflow: auto;
+        max-width: 100vw;
+        margin-top: 2rem;
+        padding: 1rem;
+        display: flex;
+        gap: 1rem;
+        border-bottom: 1px solid hsl(0, 0%, 100%, 0.4);
+        & > div {
+          min-width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .roadMap {
+      text-align: center;
+        border-bottom: 1px solid hsl(0, 0%, 100%, 0.4);
+      
+
+    .roadMap_item {
+      >div>div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // background: red;
+        text-align: center;
+        max-width: 10rem;
+      }
+      margin-top: 2rem;
+        padding: 0 1rem;
+
+        .left {
+          display: flex;
+          padding: 1.5rem;
+        }
+        .center {
+          align-items: center;
+          justify-content: center;
+          // padding: .5rem;
 
         }
-        p{
-            padding:0 2rem;
-            font-weight: 300;
-            font-size: .89rem;
-            line-height: 1.35rem;
+        .right {
+          justify-content: end;
         }
-        .mint{
-            position: absolute;
-            right: 0;
-            top: 0-10%
-        }
-        .carousell{
-            height: 12rem;
-            overflow: auto;
-            max-width: 100vw;
-            margin-top: 2rem;
-            padding: 1rem;
-            display: flex;
-            gap:1rem;
-            border-bottom: 1px solid hsl(0, 0%, 100%, 0.4);
-            &>div{
-                min-width: 42%;
-                display: flex;
-                justify-content: center;
-            }
-        }
+      }
     }
   }
 }

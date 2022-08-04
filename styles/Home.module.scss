@@ -36,17 +36,19 @@
       flex-direction: row;
       flex-direction: column;
       width: 100%;
-
+      max-width: 400px;
+      
       //   max-width: 300px;
-      height: clamp(300px, 50vh, calc(40vh - 4rem));
+      // height: clamp(300px, 50vh, calc(40vh - 4rem));
+      aspect-ratio: 1;
       margin: 0 auto;
     }
     .position{
       position: absolute;
-      bottom: 4%;
-      right:16%;
-      width: 40%;
-      height: 30%;
+      bottom: 2%;
+      right:14%;
+      width: 35%;
+      // height: 30%;
       // background: red;
     }
     .lzyutes_and_sign {

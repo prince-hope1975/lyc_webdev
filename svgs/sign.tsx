@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 const Sign = ({ children, className }: { children: any; className : string}) => {
   return (

@@ -8,6 +8,16 @@ import Main from "../component/main";
 import { useGlobalContext } from "../context";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoChevronBackOutline } from "react-icons/io5";
+import {
+  Drop,
+  Creative,
+  Exclusive,
+  Physical,
+  DeFashion,
+  LeftDU,
+  RightDD,
+  RightDU,
+} from "../svgs/roadmap";
 
 const Home: NextPage = () => {
   const { state, setState } = useGlobalContext();
@@ -48,9 +58,9 @@ const Home: NextPage = () => {
         <div className={styles.images}>
           {state && (
             <div className={styles.woman}>
-              <Image src={"/avatar3.svg"} width={100} height={400} />
+              <Image src={"/queen.png"} width={100} height={400} />
               <div className={styles.masked}>
-                <Image priority src={"/masked.svg"} width={100} height={300} />
+                <Image src={"/masked.png"} width={100} height={300} />
               </div>
             </div>
           )}
@@ -72,20 +82,40 @@ const Home: NextPage = () => {
                 who are barred with alack of opportunities and resources but go
                 ahead and make it anyways. Lzyutesclub is a community based
                 project with the aim of providing its members the facilities
-                needed to show {"it's"} untapped and unique talents to the world.
-                Our goal is to provide grants, mentorship, and a platform for
-                youths in Nigeria and all of over globe who have been shunned by
-                a condescending society.
+                needed to show {"it's"} untapped and unique talents to the
+                world. Our goal is to provide grants, mentorship, and a platform
+                for youths in Nigeria and all of over globe who have been
+                shunned by a condescending society.
               </p>
 
               <div className={styles.carousell}>
-                {[0, 0, 0, 0, 0].map((_, index) => {
+                {images.map((src, index) => {
                   return (
                     <div key={index}>
-                      <Image src={"/avatar3.svg"} width={100} height={100} />
+                      <Image src={src} width={1000} height={1000} />
                     </div>
                   );
                 })}
+              </div>
+            </div>
+
+            <div className={styles.roadMap}>
+              <h2>Road Map</h2>
+              <div className={styles.roadMap_container}>
+                <div className={styles.roadMap_item}>
+                  {props.map((Item, index) => {
+                    let styless = `${styles.left}`;
+                    if (index % 2 == 1) styless = `${styles.center} ${styless}`;
+                    if (index === 2 || index ===6) styless = `${styles.right} ${styless}`;
+
+                    return (
+                        <div className={styless}>
+                          <Item /> 
+                        </div>
+                    
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </>
@@ -94,5 +124,26 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+const props = [
+  Drop,
+  RightDD,
+  Creative,
+  LeftDU,
+  Exclusive,
+  RightDU,
+  Physical,
+  LeftDU,
+  DeFashion,
+];
+
+const images = [
+  "/images/Biker 3-1.png",
+  "/images/Graffiti  2-1.png",
+  "/images/Red 2-1.png",
+  "/images/Biker 3.png",
+  "/images/Graffiti  2.png",
+  "/images/Red 2.png",
+];
 
 export default Home;
