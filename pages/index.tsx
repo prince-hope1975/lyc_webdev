@@ -8,6 +8,7 @@ import Main from "../component/main";
 import { useGlobalContext } from "../context";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoChevronBackOutline } from "react-icons/io5";
+import { Box } from "../component/teamBox";
 import {
   Drop,
   Creative,
@@ -133,6 +134,27 @@ const Home: NextPage = () => {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+
+            <div className={styles.core}>
+              <div>
+                <Box
+             
+                  src={"/images/left.png"}
+                  role={"Developer"}
+                  title={"Manny"}
+                  twitter={"@Yutemanny"}
+                  twitter_link={"https://twitter.com/yutesmanny"}
+                />{" "}
+                <Box
+            
+                  src={"/images/right.png"}
+                  role={"Developer"}
+                  title={"Manny"}
+                  twitter={"@Yutemanny"}
+                  twitter_link={"https://twitter.com/yutesmanny"}
+                />
               </div>
             </div>
           </>
