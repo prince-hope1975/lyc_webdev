@@ -19,6 +19,8 @@ import {
   RightDU,
 } from "../svgs/roadmap";
 
+import { FaQ, RightArror } from "../svgs/faq";
+
 const Home: NextPage = () => {
   const { state, setState } = useGlobalContext();
   const [animate, setAnimate] = useState(false);
@@ -106,16 +108,31 @@ const Home: NextPage = () => {
                   {props.map((Item, index) => {
                     let styless = `${styles.left}`;
                     if (index % 2 == 1) styless = `${styles.center} ${styless}`;
-                    if (index === 2 || index ===6) styless = `${styles.right} ${styless}`;
+                    if (index === 2 || index === 6)
+                      styless = `${styles.right} ${styless}`;
 
                     return (
-                        <div className={styless}key={index}>
-                          <Item /> 
-                        </div>
-                    
+                      <div className={styless} key={index}>
+                        <Item />
+                      </div>
                     );
                   })}
                 </div>
+              </div>
+            </div>
+
+            <div className={styles.faq}>
+              <span className={styles.header}>
+                <FaQ />
+              </span>
+              <div className={styles.info}>
+                {desc.map((item, index) => {
+                  return (
+                    <div key={index}>
+                      <RightArror /> {item}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </>
@@ -124,6 +141,15 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+const desc = [
+  "decentralized fashion project and physical community interaction",
+  "decentralized fashion project and physical community interaction",
+  "decentralized fashion project and physical community interaction",
+  "decentralized fashion project and physical community interaction",
+  "decentralized fashion project and physical community interaction",
+  "decentralized fashion project and physical community interaction",
+];
 
 const props = [
   Drop,
