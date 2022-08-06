@@ -2,22 +2,7 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  nav {
-    max-height: 4rem;
-    display: flex;
-    margin-top: 1rem;
-    padding-right: 0.5rem;
-    justify-content: space-between;
-    .logo_wrapper {
-      display: flex;
-    }
-    .main_links_logo {
-      display: flex;
-      flex-direction: row;
-      max-width: 4rem;
-      gap: 1rem;
-    }
-  }
+
   & > section,
   .main_section {
     width: 100%;
@@ -105,3 +90,20 @@
     }
   }
 }
+
+  .nav {
+    max-height: 4rem;
+    display: flex;
+    margin-top: 1rem;
+    padding-right: 0.5rem;
+    justify-content: space-between;
+    .logo_wrapper {
+      display: flex;
+    }
+    .main_links_logo {
+      display: flex;
+      flex-direction: row;
+      max-width: 4rem;
+      gap: 1rem;
+    }
+  }

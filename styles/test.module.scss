@@ -1,6 +1,3 @@
-.container {
-  .main {
-    padding-top: 1rem;
     .nav {
       display: flex;
       flex-direction: column;
@@ -44,6 +41,12 @@
         cursor: pointer;
       }
     }
+.container {
+
+  
+  .main {
+    padding-top: 1rem;
+
     .images {
       position: relative;
       // transform: translateX(50vw);
@@ -86,7 +89,7 @@
       .mint {
         position: absolute;
         right: 0;
-        top: 0-10%;
+        top: -5%;
       }
       .carousell {
         height: 12rem;
@@ -132,7 +135,7 @@
           // padding: .5rem;
         }
         .right {
-          justify-content: end;
+          justify-content: flex-end;
         }
       }
     }
@@ -163,7 +166,7 @@
 
     .core {
       background: white;
-
+      padding-bottom: 2rem;
       > div {
         display: flex;
         padding: 3rem;
@@ -203,5 +206,59 @@
     // background: red;
     // height: 10rem;
     aspect-ratio: 1/1.2;
+  }
+}
+
+.footer {
+  position: relative;
+  min-height: 30vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: hsl(0, 0%, 50%);
+  .sign {
+    position: absolute;
+    right: 0;
+    top: -15%;
+  }
+  .line {
+    width: 95%;
+    // margin:0 auto;
+    height: 0.07rem;
+    background: hsl(0, 0%, 100%, 0.5);
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+  .bottomSection {
+    display: flex;
+    width: 100%;
+    height: 4rem;
+    justify-content: space-between;
+    .icons{
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      p{
+        margin: 0;
+      }
+    }
+    > svg {
+    }
+    .links {
+      display: flex;
+      flex-direction: row;
+      max-width: 4rem;
+      gap: 1rem;
+      justify-content: flex-end;
+     
+      margin-left: auto;
+    }
+  }
+  a {
+    color: hsl(0, 0%, 50%);
+    text-decoration: none;
   }
 }

@@ -9,6 +9,8 @@ import { useGlobalContext } from "../context";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { Box } from "../component/teamBox";
+import Navigation from "../component/Navigatoin";
+import Footer from "../component/Footer";
 import {
   Drop,
   Creative,
@@ -21,15 +23,12 @@ import {
 } from "../svgs/roadmap";
 
 import { FaQ, RightArror } from "../svgs/faq";
+import { Lazy, Sign } from "../svgs/footer.Svgs";
 
 const Home: NextPage = () => {
   const { state, setState } = useGlobalContext();
   const [animate, setAnimate] = useState(false);
-  const [modalOpen, setModalOpen] = useState(true);
 
-  const toggleModal = () => {
-    setModalOpen(!modalOpen);
-  };
   return (
     <div
       style={{ height: "100vh", position: "relative" }}
@@ -43,20 +42,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         {state && (
-          <nav className={styles.nav}>
-            {/* @ts-ignore */}
-            <div className={styles.button_group}>
-              {/* @ts-ignore */}
-              <IoChevronBackOutline onClick={() => setState(!state)} />
-              <AiOutlineMenu onClick={toggleModal} />
-            </div>
-            <ul className={`${styles.modal} ${modalOpen && styles.toggle}`}>
-              <li>Art</li>
-              <li>Fashoin</li>
-              <li>Team</li>
-              <li>Join Discord</li>
-            </ul>
-          </nav>
+     <Navigation />
         )}
         <div className={styles.images}>
           {state && (
@@ -139,24 +125,12 @@ const Home: NextPage = () => {
 
             <div className={styles.core}>
               <div>
-                <Box
-             
-                  src={"/images/left.png"}
-                  role={"Developer"}
-                  title={"Manny"}
-                  twitter={"@Yutemanny"}
-                  twitter_link={"https://twitter.com/yutesmanny"}
-                />{" "}
-                <Box
-            
-                  src={"/images/right.png"}
-                  role={"Developer"}
-                  title={"Manny"}
-                  twitter={"@Yutemanny"}
-                  twitter_link={"https://twitter.com/yutesmanny"}
-                />
+                {teamInfo.map((props, index) => {
+                  return <Box {...props} key={index + props.title} />;
+                })}
               </div>
             </div>
+<Footer />
           </>
         )}
       </main>
@@ -192,6 +166,58 @@ const images = [
   "/images/Biker 3.png",
   "/images/Graffiti  2.png",
   "/images/Red 2.png",
+];
+
+const teamInfo = [
+  {
+    src: "/images/left.png",
+    role: "Developer",
+    title: "Manny",
+    twitter: "@Yutemanny",
+    twitter_link: "https://twitter.com/yutesmanny",
+  },
+  {
+    src: "/images/right.png",
+    role: "Community Manager",
+    title: "Agentvic",
+    twitter: "@Agent_vick",
+    twitter_link: "https://twitter.com/Agent_vick",
+  },
+  {
+    src: "/images/left.png",
+    role: "Developer",
+    title: "Angel Ese",
+    twitter: "@ese_ghene_",
+    twitter_link: "https://twitter.com/ese_ghene_",
+  },
+  {
+    src: "/images/right.png",
+    role: "Creative Writer",
+    title: "Gloverboy",
+    twitter: "@guworwarebi",
+    twitter_link: "https://twitter.com/guworwarebi",
+  },
+  {
+    src: "/images/left.png",
+    role: "Artist",
+    title: "Danive",
+    twitter: "@danive3d",
+    twitter_link: "https://twitter.com/danive3d",
+  },
+  {
+    src: "/images/right.png",
+    role: "Chief Strategist",
+    title: "BossSKA",
+    twitter: "@ska_kabir",
+    twitter_link: "https://twitter.com/ska_kabir",
+  },
+  {
+    src: "/images/right.png",
+    role: "Team Leader",
+    title: "RedPill",
+    twitter: "@EzeugoPhilip",
+    twitter_link: "https://twitter.com/EzeugoPhilip",
+  },
 ];
 
 export default Home;
