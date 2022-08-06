@@ -33,7 +33,7 @@ export const FigPie = () => (
         width="300.991"
         height="292"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
         <feFlood flood-opacity="0" result="BackgroundImageFix" />
         <feBlend

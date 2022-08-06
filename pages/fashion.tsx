@@ -11,7 +11,7 @@ import { BsArrowRightCircle } from "react-icons/bs";
 const Fashion = () => {
   return (
     <main>
-      <Navigation />
+      <Navigation dontToggle />
       <div className={styles.walkingMan}>
         <div className={styles.inner}>
           {[...Array(5)].fill("").map((_, key) => {
