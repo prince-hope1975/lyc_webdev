@@ -1,5 +1,4 @@
 import { ImageProps } from "next/image";
-import path from "path";
 import Image from "next/image";
 import React from "react";
 import styles from "../styles/test.module.scss";
@@ -16,7 +15,7 @@ export const Box = (
   return (
     <div className={styles.box}>
       <span className={styles.img}>
-        <Image width={900} height={1000} {...props} />
+        <Image priority width={900} height={1000} {...props} />
       </span>
       <span className={styles.header}>{props.title}</span>
       <p>{props.role}</p>

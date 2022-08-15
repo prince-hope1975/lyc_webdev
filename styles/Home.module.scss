@@ -1,69 +1,75 @@
 .main {
-  height: 100vh;
+  min-height: max(300px, 100vh);
   width: 100%;
   overflow: hidden;
+  @media (min-width: 600px) {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+  }
 
   & > section,
   .main_section {
     width: 100%;
-    height: clamp(800px, 100vh, calc(100vh - 4rem));
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    gap: 1rem;
     padding: 1.5rem;
-    // background: orange;
+    margin-top: auto;
 
     // Home image styles
     .home_image {
-      position: relative;
+      position: absolute;
       display: flex;
-      flex-direction: row;
-      flex-direction: column;
-      width: 100%;
-      max-width: 400px;
-      
-      //   max-width: 300px;
-      // height: clamp(300px, 50vh, calc(40vh - 4rem));
-      aspect-ratio: 1;
-      margin: 0 auto;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(100%, 300px);
+      @media (min-width: 600px) {
+        width: min(50%, 500px);
+        left: 25%;
+        top: 50%;
+      }
     }
-    .position{
+    .position {
       position: absolute;
       bottom: 2%;
-      right:14%;
+      right: 14%;
       width: 35%;
-      // height: 30%;
-      // background: red;
+      transform: translate(0%);
+      @media (min-width: 600px) {
+        width: 10rem;
+        aspect-ratio: 1;
+        left:50%;
+        top:67%;
+        transform: translateX(-1.5rem);
+      }
     }
     .lzyutes_and_sign {
-      height: 100%;
       width: 100%;
       // background: red;
-      max-height: calc(50vh - 4rem);
-      display: flex;
-      gap: 0.7rem;
+      // height: max(100%, 50vh - 4rem);
+      // display: flex;
       flex-direction: column;
       transform: translateY(-2.3rem);
+
       .text {
         width: 100%;
         display: flex;
         flex-direction: column;
         height: 5.5rem;
+        aspect-ratio: 1/0.2;
       }
       .sign {
-        max-width: 500px;
-        margin: auto;
-        // background: green;
         position: relative;
         color: black;
         width: 100%;
+        height: 12rem;
         display: flex;
         flex-direction: column;
-        // background: violet;
         font-size: 0.75rem;
         letter-spacing: 0.01px;
-        max-height: 13rem;
+
         div {
           position: absolute;
           cursor: pointer;
@@ -87,23 +93,63 @@
           }
         }
       }
+
+      @media (min-width: 600px) {
+        transform: translateY(0rem);
+        min-height: calc(100vh - 3rem);
+        aspect-ratio: 1;
+        .text {
+          margin-top: 6rem;
+          height: 7rem;
+        }
+        .sign {
+          height: 15rem;
+        }
+      }
+      @media (min-width: 700px) {
+        .text {
+          margin-top: 8rem;
+          height: 7rem;
+        }
+        .sign {
+          height: 17rem;
+        }
+      }
+      @media (min-width: 800px) {
+        .text {
+          margin-top: 9rem;
+          height: 9rem;
+        }
+        .sign {
+          height: 20rem;
+        }
+      }
+      @media (min-width: 1000px) {
+        .text {
+          margin-top: 10rem;
+          height: 10rem;
+        }
+        .sign {
+          height: 20rem;
+        }
+      }
     }
   }
 }
 
-  .nav {
-    max-height: 4rem;
+.nav {
+  max-height: 4rem;
+  display: flex;
+  margin-top: 1rem;
+  padding-right: 0.5rem;
+  justify-content: space-between;
+  .logo_wrapper {
     display: flex;
-    margin-top: 1rem;
-    padding-right: 0.5rem;
-    justify-content: space-between;
-    .logo_wrapper {
-      display: flex;
-    }
-    .main_links_logo {
-      display: flex;
-      flex-direction: row;
-      max-width: 4rem;
-      gap: 1rem;
-    }
   }
+  .main_links_logo {
+    display: flex;
+    flex-direction: row;
+    max-width: 4rem;
+    gap: 1rem;
+  }
+}

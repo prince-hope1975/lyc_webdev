@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from "react";
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "../styles/Main.module.scss";
@@ -7,6 +6,7 @@ import { motion, MotionStyle } from "framer-motion";
 import Link from "next/link";
 import Sign from "../svgs/sign";
 import { useGlobalContext } from "../context";
+import { Queen_portrait,  } from "../svgs/portrait";
 
 export const Main = ({ style }:  { style: MotionStyle }) => {
   const {state, setState} = useGlobalContext()
@@ -78,3 +78,4 @@ const CustomLink = ({
     </div>
   );
 };
+

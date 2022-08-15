@@ -1,5 +1,5 @@
 import { MotionStyle, Variant, Variants } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "../styles/Home.module.scss";
@@ -10,6 +10,24 @@ import Nav from "./Nav";
 
 const Main = ({ style }: { style?: MotionStyle }) => {
   const { state, setState } = useGlobalContext();
+  const [height, setHeight] = useState(0);
+  const ref = React.useRef(null);
+
+  const [matches, setMatches] = useState("" as any );
+React.useEffect(()=>{  if (typeof window !== "undefined") {
+  // browser code
+  setMatches(window?.matchMedia("(min-width: 600px)").matches);
+}},[])
+  React.useEffect(() => {
+    window?.matchMedia("(min-width: 600px)")
+      .addEventListener("change", (e) => setMatches(e.matches));
+  }, []);
+
+  React.useEffect(() => {
+    // @ts-ignore
+    setHeight(ref?.current.clientHeight);
+    console.log(height);
+  });
   const variant: Variants = {
     active: {
       scale: 1.1,
@@ -35,36 +53,37 @@ const Main = ({ style }: { style?: MotionStyle }) => {
       className={styles.main}
       style={{ height: state ? "0" : "" }}
     >
-      {!state && (
-  <Nav />
-      )}
+      {!state && <Nav />}
 
       <section className={styles.main_section}>
-        <div className={`${styles.home_image} ${state && styles.position}`}>
-          <Image src={"/main.png"} width={1000} height={1000} />
+        <div>
+          <div
+            className={`${styles.home_image} ${state && styles.position}`}
+            ref={ref}
+          >
+            <Image priority src={"/main.png"} width={1000} height={1000} />
+          </div>
         </div>
         <AnimatePresence>
           {!state && (
-            <motion.div className={styles.lzyutes_and_sign}>
+            <motion.div
+              className={styles.lzyutes_and_sign}
+              style={{ paddingTop: `${ !matches?height:0}px` }}
+            >
               <motion.div
                 animate="active"
                 variants={variant}
                 className={styles.text}
               >
-                <Image src={"/lzyutes.svg"} width={100} height={500} />
+                <Image src={"/lzyutes.svg"} width={100} height={100} />
               </motion.div>
               <div className={styles.sign}>
-                <Image src={"/sign.svg"} width={100} height={500} />
+                <Image src={"/sign.svg"} width={100} height={300} />
                 <Link href="/fashion">
-                <motion.div
-                  whileHover={(style = { scale: 1.3 })}
-
-                  // onClick={() => setState("inactive")}
-                >
-                  <Fashion />
-
-                </motion.div>
-                  </Link>
+                  <motion.div whileHover={(style = { scale: 1.3 })}>
+                    <Fashion />
+                  </motion.div>
+                </Link>
                 <motion.div
                   /* @ts-ignore */
                   onClick={() => setState(!state)}

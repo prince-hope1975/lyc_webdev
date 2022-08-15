@@ -8,6 +8,7 @@ import Main from "../component/main";
 import { useGlobalContext } from "../context";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoChevronBackOutline } from "react-icons/io5";
+import Queen from "../svgs/queen"
 import { Box } from "../component/teamBox";
 import Navigation from "../component/Navigatoin";
 import Footer from "../component/Footer";
@@ -41,15 +42,14 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        {state && (
-     <Navigation />
-        )}
+        {state && <Navigation />}
         <div className={styles.images}>
           {state && (
             <div className={styles.woman}>
-              <Image src={"/queen.png"} width={100} height={400} />
+              {/* <Image src={"/qween.png"} priority width={100} height={400} /> */}
+              <Queen />
               <div className={styles.masked}>
-                <Image src={"/masked.png"} width={100} height={300} />
+                <Image src={"/masked.png"} priority width={100} height={300} />
               </div>
             </div>
           )}
@@ -130,7 +130,7 @@ const Home: NextPage = () => {
                 })}
               </div>
             </div>
-<Footer />
+            <Footer />
           </>
         )}
       </main>
