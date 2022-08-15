@@ -43,29 +43,34 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         {state && <Navigation />}
-        <div className={styles.images}>
-          {state && (
-            <div className={styles.woman}>
-              {/* <Image src={"/qween.png"} priority width={100} height={400} /> */}
-              <Queen />
-              <div className={styles.masked}>
-                <Image src={"/masked.png"} priority width={100} height={300} />
+        <div
+          style={{ gridTemplateColumns: !state ? "1fr" : "" }}
+          className={styles.topSection}
+        >
+          <div className={styles.images}>
+            {state && (
+              <div className={styles.woman}>
+                {/* <Image srsc={"/qween.png"} priority width={100} height={400} /> */}
+                <Queen />
+                <div className={styles.masked}>
+                  <Image
+                    src={"/masked.png"}
+                    priority
+                    width={100}
+                    height={300}
+                  />
+                </div>
               </div>
-            </div>
-          )}
-          {/* @ts-ignore */}
-          <Main
-          //  style={{position:animate?"absolute": "relative"}}
-          />
-        </div>
-        {state && (
-          <>
+            )}
+            {/* @ts-ignore */}
+            <Main
+            //  style={{position:animate?"absolute": "relative"}}
+            />
+          </div>
+          {state && (
             <div className={styles.about}>
               <h2>Who Are We</h2>
 
-              <div className={styles.mint}>
-                <Image src={"/mint.svg"} width={100} height={100} />
-              </div>
               <p>
                 We are Lzyutes a collection of multifaceted talented individuals
                 who are barred with alack of opportunities and resources but go
@@ -76,12 +81,20 @@ const Home: NextPage = () => {
                 for youths in Nigeria and all of over globe who have been
                 shunned by a condescending society.
               </p>
-
+            </div>
+          )}
+        </div>
+        {state && (
+          <>
+            <div className={styles.about}>
+              <div className={styles.mint}>
+                <Image src={"/mint.svg"} width={100} height={100} />
+              </div>
               <div className={styles.carousell}>
                 {images.map((src, index) => {
                   return (
                     <div key={index}>
-                      <Image src={src} width={1000} height={1000} />
+                      <Image src={src} width={200} height={200} />
                     </div>
                   );
                 })}
