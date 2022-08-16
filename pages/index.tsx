@@ -51,7 +51,6 @@ const Home: NextPage = () => {
             {state && (
               <div className={styles.woman}>
                 <Image src={"/qween.png"} priority  width={350} height={400} />
-                {/* <Queen /> */}
                 <div className={styles.masked}>
                   <Image
                     src={"/masked.png"}
