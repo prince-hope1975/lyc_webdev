@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue, get, child } from "firebase/database";
 
 const Submit = () => {
+  // useEffect(()=>{
+  //   (async()=>{
+  //     const db = await fetchDb("")
+  //     console.log(Object.keys(db))
+  //   })()
+  // })
   const [pwd,setPwd] = useState("");
   const [submitAddr, setSubmitAddr] = useState(false);
   const handleSubmit = async(e:Event)=>{
     e.preventDefault()
    const val=  await fetchDb(pwd)
-   if(!!pwd){
+   if(val){
      // 1AF5n
      alert(`Correct : ${pwd}`);
      setSubmitAddr(true);
@@ -30,7 +36,7 @@ const Submit = () => {
       }}
     >
   {!submitAddr?    <>
-        <p>submit Your details here</p>
+        <p>submit Your password here</p>
         <form >
           <input type="password" value={pwd} onChange={(e)=>setPwd(e.target.value)} />
           {/* @ts-ignore */}
@@ -61,7 +67,7 @@ async function fetchDb(item:string) {
     return snapshot.val();
   } catch (e) {
     console.log(e);
-    return { error: e };
+    return null
   }
 }
 const firebaseConfig = {
