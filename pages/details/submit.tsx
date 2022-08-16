@@ -4,12 +4,14 @@ import { getDatabase, ref, set, onValue, get, child } from "firebase/database";
 
 const Submit = () => {
   const [pwd,setPwd] = useState("");
+  const [submitAddr, setSubmitAddr] = useState(false);
   const handleSubmit = async(e:Event)=>{
     e.preventDefault()
    const val=  await fetchDb(pwd)
    if(!!pwd){
      // 1AF5n
      alert(`Correct : ${pwd}`);
+     setSubmitAddr(true);
    }
    else{
     alert(`Wrong Password:  ${pwd}`);
@@ -27,13 +29,20 @@ const Submit = () => {
         textAlign: "center",
       }}
     >
-      <p>submit Your details here</p>
-      <form >
-
-        <input type="password" value={pwd} onChange={(e)=>setPwd(e.target.value)} />
-        {/* @ts-ignore */}
-        <input type="submit" onClick={handleSubmit} />
-      </form>
+  {!submitAddr?    <>
+        <p>submit Your details here</p>
+        <form >
+          <input type="password" value={pwd} onChange={(e)=>setPwd(e.target.value)} />
+          {/* @ts-ignore */}
+          <input type="submit" onClick={handleSubmit} />
+        </form>
+      </>:
+      <div>
+        <p>Please submit your Address</p>
+        <input type="text" style={{minWidth: "10rem"}} />
+        <input type="submit" value={"submit Address"}/>
+      </div>
+      }
     </div>
   );
 };
