@@ -50,8 +50,8 @@ const Home: NextPage = () => {
           <div className={styles.images}>
             {state && (
               <div className={styles.woman}>
-                {/* <Image srsc={"/qween.png"} priority width={100} height={400} /> */}
-                <Queen />
+                <Image src={"/qween.png"} priority width={100} height={400} />
+                {/* <Queen /> */}
                 <div className={styles.masked}>
                   <Image
                     src={"/masked.png"}
