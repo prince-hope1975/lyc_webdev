@@ -6,9 +6,7 @@ import styles from "../styles/test.module.scss";
 import { motion } from "framer-motion";
 import Main from "../component/main";
 import { useGlobalContext } from "../context";
-import { AiOutlineMenu } from "react-icons/ai";
-import { IoChevronBackOutline } from "react-icons/io5";
-import Queen from "../svgs/queen"
+
 import { Box } from "../component/teamBox";
 import Navigation from "../component/Navigatoin";
 import Footer from "../component/Footer";
