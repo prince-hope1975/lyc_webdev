@@ -1,22 +1,17 @@
 .main {
-  // min-height: min(300px, 100vh);
   width: 100%;
   overflow: hidden;
   @media (min-width: 600px) {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
+    // height: min(500px, calc(100vh - 54px));
   }
-  .topSection{
-
+  .topSection {
   }
 
   & > section,
   .main_section {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(231px, 1fr));
     gap: 1rem;
     padding: 1.5rem;
     margin-top: auto;
@@ -31,29 +26,26 @@
       @media (min-width: 600px) {
         width: min(50%, 500px);
         left: 25%;
-        top: 50%;
+        // top: 50%;
       }
     }
     .position {
       position: absolute;
-      bottom: 2%;
+      bottom: -2%;
       right: 14%;
-      width: 35%;
+      width: 9rem;
       transform: translate(0%);
       @media (min-width: 600px) {
-        width: 10rem;
         aspect-ratio: 1;
-        left:50%;
-        top:67%;
+        left: 50%;
+        top: 67%;
         transform: translateX(-1.5rem);
       }
     }
     .lzyutes_and_sign {
       width: 100%;
-      // background: red;
-      // height: max(100%, 50vh - 4rem);
-      // display: flex;
       flex-direction: column;
+
       transform: translateY(-2.3rem);
 
       .text {
@@ -98,42 +90,43 @@
       }
 
       @media (min-width: 600px) {
-        transform: translateY(0rem);
+        transform: translateY(-5.5rem);
+
         min-height: calc(100vh - 3rem);
         aspect-ratio: 1;
         .text {
           margin-top: 6rem;
-          height: 7rem;
+          height: 4rem;
+        }
+        .sign {
+          height: 13rem;
+        }
+      }
+      @media (min-width: 700px) {
+        .text {
+          margin-top: 7rem;
+          height: 5rem;
         }
         .sign {
           height: 15rem;
         }
       }
-      @media (min-width: 700px) {
-        .text {
-          margin-top: 8rem;
-          height: 7rem;
-        }
-        .sign {
-          height: 17rem;
-        }
-      }
       @media (min-width: 800px) {
         .text {
-          margin-top: 9rem;
-          height: 9rem;
+          margin-top: 7rem;
+          height: 6rem;
         }
         .sign {
-          height: 20rem;
+          height: 16rem;
         }
       }
       @media (min-width: 1000px) {
         .text {
-          margin-top: 10rem;
-          height: 10rem;
+          margin-top: 8rem;
+          height: 8rem;
         }
         .sign {
-          height: 20rem;
+          height: 19rem;
         }
       }
     }

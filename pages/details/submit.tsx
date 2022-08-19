@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue, get, child } from "firebase/database";
+import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-
+import {
+  speechBoxL as SpeechBoxL,
+  speechBoxR as SpeechBoxR,
+} from "../../svgs/speechBox";
+import styles from "../../styles/details.module.scss";
+import { BareLogo } from "../../svgs/roadmap";
 const Submit = () => {
-  // useEffect(()=>{
-  //   (async()=>{
-  //     const db = await fetchDb("")
-  //     console.log(Object.keys(db))
-  //   })()
-  // })
   const varint: Variants = {
     initial: {
       opacity: 0,
@@ -22,8 +22,11 @@ const Submit = () => {
     },
   };
   const [pwd, setPwd] = useState("");
-  const [submitAddr, setSubmitAddr] = useState(false);
-  const [done, setDone] = useState(false);
+  const [text, setText] = useState("");
+  const [animate, setAnimate] = useState(false);
+  const [view, setView] = useState(
+    "password" as "password" | "address" | "finish"
+  );
   const [addr, setAddr] = useState("");
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
@@ -35,7 +38,7 @@ const Submit = () => {
         return;
       } else {
         alert(`You entered The correct password : ${pwd}`);
-        setSubmitAddr(true);
+        setView("address");
       }
     } else {
       alert(`You entered a Wrong Password:  ${pwd}`);
@@ -48,24 +51,45 @@ const Submit = () => {
     // setAddr(e.target["address"].value);
     try {
       const data = await writeToDb(pwd, addr);
-      setDone(true);
+      setView("address");
     } catch (error) {
       console.error(error);
     }
   };
+
+  const Loading = ({
+    animate,
+    text,
+  }: {
+    animate: boolean;
+    text: string | ReactElement;
+  }) => {
+    return (
+      <motion.div
+        style={{
+          width: "300px",
+          aspectRatio: "1/.5",
+          background: "white",
+          position: "absolute",
+          left: "50%",
+          top: "25%",
+          x: "-50%",
+        }}
+        initial={{ y: -500, opacity: 0 }}
+        animate={{ y: animate ? 0 : -500, opacity: animate ? 1 : 0 }}
+      ></motion.div>
+    );
+  };
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "grid",
-        placeContent: "center",
-        fontSize: "2rem",
-        textAlign: "center",
-      }}
-    >
+    <div className={styles.container} style={{}}>
+      <nav className={styles.nav}>
+        <div className={styles.logo_wrapper}>
+          <BareLogo />{" "}
+        </div>
+      </nav>
+      <Loading {...{ text, animate }} />
       <AnimatePresence exitBeforeEnter>
-        {!submitAddr ? (
+        {view == "password" && (
           <motion.div
             layout
             variants={varint}
@@ -73,37 +97,68 @@ const Submit = () => {
             animate="animate"
             exit="exit"
           >
-            <motion.p>submit Your password here</motion.p>
+            <SpeechBoxL
+              className={styles.box}
+              text="Claim Your  Prototype Pass"
+            />
+            <SpeechBoxR className={styles.box} text="Enter unique PassCode" />
             <motion.form>
-              <input
-                type="password"
-                value={pwd}
-                onChange={(e) => setPwd(e.target.value)}
-              />
-              {/* @ts-ignore */}
-              <motion.input type="submit" onClick={handleSubmit} />
+              <div className={styles.img1}>
+                <Image src={"/her.png"} width={300} height={500} />
+              </div>
+              <div className={styles.img2}>
+                <Image src={"/her.png"} width={500} height={500} />
+              </div>
+              <div className={styles.input}>
+                <input
+                  type="password"
+                  placeholder="Enter"
+                  value={pwd}
+                  onChange={(e) => setPwd(e.target.value)}
+                />
+                {/* @ts-ignore */}
+                <motion.input type="submit" onClick={handleSubmit} />
+              </div>
             </motion.form>
           </motion.div>
-        ) : !done ? (
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {view == "address" && (
           <motion.div
             variants={varint}
             initial="initial"
             animate="animate"
             exit="exit"
           >
-            <p>Please submit your Address</p>
-            <input
-              type="text"
-              onChange={(e) => setAddr(e.target.value)}
-              style={{ minWidth: "10rem" }}
+            <SpeechBoxL
+              className={styles.box}
+              text="Claim Your  Prototype Pass"
             />
-            <input
-              onClick={(e) => handleAddress(e)}
-              type="submit"
-              value={"submit Address"}
+            <SpeechBoxR
+              className={styles.box}
+              text="Enter Ethereum wallet address"
             />
+            <div className={styles.img1}>
+              <Image src={"/her.png"} width={300} height={500} />
+            </div>
+            <div className={styles.img2}>
+              <Image src={"/her.png"} width={500} height={500} />
+            </div>
+            <div className={styles.input}>
+              <input
+                type="text"
+                placeholder="Enter"
+                onChange={(e) => setAddr(e.target.value)}
+                style={{ minWidth: "10rem" }}
+              />
+              <input onClick={(e) => handleAddress(e)} type="submit" />
+            </div>
           </motion.div>
-        ) : (
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {view == "finish" && (
           <motion.div
             variants={varint}
             initial="initial"

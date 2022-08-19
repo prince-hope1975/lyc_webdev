@@ -62,8 +62,8 @@ const Fashion = () => {
         <LzyUTES />
         <div className={styles.innerContainer}>
           <div>
-            <Image src={"/images/fashion/hood1.png"} width={80} height={100} />
-            <Image src={"/images/fashion/hood2.png"} width={100} height={130} />
+            <Image src={"/images/fashion/hood1.png"} width={80} height={90} />
+            <Image src={"/images/fashion/hood2.png"} width={100} height={125} />
           </div>
           <span>
             Checkout Store <BsArrowRightCircle />

@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
+import React from "react";
 import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/test.module.scss";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import Main from "../component/main";
 import { useGlobalContext } from "../context";
 
@@ -22,8 +23,9 @@ import {
 } from "../svgs/roadmap";
 
 import { FaQ, RightArror } from "../svgs/faq";
-import { Lazy, Sign } from "../svgs/footer.Svgs";
 
+import { Lazy, Sign } from "../svgs/footer.Svgs";
+const times = 1.2;
 const Home: NextPage = () => {
   const { state, setState } = useGlobalContext();
   const [animate, setAnimate] = useState(false);
@@ -48,7 +50,12 @@ const Home: NextPage = () => {
           <div className={styles.images}>
             {state && (
               <div className={styles.woman}>
-                <Image src={"/qween.png"} priority  width={350} height={400} />
+                <Image
+                  src={"/qween.png"}
+                  priority
+                  width={350 * times}
+                  height={400 * times}
+                />
                 <div className={styles.masked}>
                   <Image
                     src={"/masked.png"}

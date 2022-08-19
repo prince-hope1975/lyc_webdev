@@ -13,13 +13,16 @@ const Main = ({ style }: { style?: MotionStyle }) => {
   const [height, setHeight] = useState(0);
   const ref = React.useRef(null);
 
-  const [matches, setMatches] = useState("" as any );
-React.useEffect(()=>{  if (typeof window !== "undefined") {
-  // browser code
-  setMatches(window?.matchMedia("(min-width: 600px)").matches);
-}},[])
+  const [matches, setMatches] = useState("" as any);
   React.useEffect(() => {
-    window?.matchMedia("(min-width: 600px)")
+    if (typeof window !== "undefined") {
+      // browser code
+      setMatches(window?.matchMedia("(min-width: 600px)").matches);
+    }
+  }, []);
+  React.useEffect(() => {
+    window
+      ?.matchMedia("(min-width: 600px)")
       .addEventListener("change", (e) => setMatches(e.matches));
   }, []);
 
@@ -49,26 +52,26 @@ React.useEffect(()=>{  if (typeof window !== "undefined") {
   // };
   return (
     <motion.div
-      // style={{ ...style, position: "absolute", left: "100vw" }}
+      layout
       className={styles.main}
-      style={{ height: state ? "0" : "" }}
+      style={{ height: state ? "0" : "calc(100vh - 54px)" }}
     >
       {!state && <Nav />}
 
-      <section className={styles.main_section}>
-        <div>
+      <motion.section className={styles.main_section}>
+        <motion.div className={styles.wrapper}>
           <div
             className={`${styles.home_image} ${state && styles.position}`}
             ref={ref}
           >
             <Image priority src={"/main.png"} width={1000} height={1000} />
           </div>
-        </div>
+        </motion.div>
         <AnimatePresence>
           {!state && (
             <motion.div
               className={styles.lzyutes_and_sign}
-              style={{ paddingTop: `${ !matches?height:0}px` }}
+              style={{ paddingTop: `${!matches ? height : 0}px` }}
             >
               <motion.div
                 animate="active"
@@ -98,7 +101,7 @@ React.useEffect(()=>{  if (typeof window !== "undefined") {
             </motion.div>
           )}
         </AnimatePresence>
-      </section>
+      </motion.section>
     </motion.div>
   );
 };

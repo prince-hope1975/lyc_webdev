@@ -48,31 +48,25 @@
     width: min(90%, 1200px);
     text-align: center;
     margin-inline: auto;
-    
-    @media (min-width:600px) {
+
+    @media (min-width: 600px) {
       grid-template-columns: 1fr 1fr;
     }
   }
 
   .main {
-    padding-top: 1rem;
 
     .images {
       position: relative;
       width: 100%;
       max-height: 100%;
-      // aspect-ratio: 1;
       align-items: center;
-      // height: min(100%, 100vh );
-      // margin-top: -1.5rem;
       z-index: 11;
       .woman {
         position: relative;
-        // height: 100%;
-        svg{
+        svg {
           // width: 100%;
         }
-   
       }
       .masked {
         position: absolute;
@@ -90,7 +84,6 @@
 
     .about {
       position: relative;
-      height: 100%;
       h2 {
         padding: 0;
         padding-top: 3rem;
@@ -122,12 +115,10 @@
           display: flex;
           justify-content: center;
           align-items: center;
-            @media (min-width: 600px) {
-          min-width: auto;
+          @media (min-width: 600px) {
+            min-width: auto;
+          }
         }
-        }
-
-      
       }
     }
 
@@ -146,18 +137,76 @@
         }
         margin-top: 2rem;
         // padding: 0 1rem;
-
-        .left {
-          display: flex;
-          padding: 1.5rem;
+        @media (max-width: 600px) {
+          .left {
+            display: flex;
+            padding: 1.5rem;
+          }
+          .center {
+            align-items: center;
+            justify-content: center;
+            // padding: .5rem;
+          }
+          .right {
+            justify-content: flex-end;
+          }
         }
-        .center {
-          align-items: center;
-          justify-content: center;
-          // padding: .5rem;
-        }
-        .right {
-          justify-content: flex-end;
+        @media (min-width: 600px) {
+          display: grid;
+          grid-template-areas:
+            "a b c"
+            "d e f"
+            "g h i";
+          > * {
+            // width: 10rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            aspect-ratio: 1;
+            @media (min-width: 800px) {
+              aspect-ratio: 1/0.5;
+            }
+          }
+          :nth-child(1) {
+            grid-area: a;
+          }
+          :nth-child(2) {
+            grid-area: b;
+            svg {
+              transform: rotate(-29deg);
+            }
+          }
+          :nth-child(3) {
+            grid-area: c;
+          }
+          :nth-child(4) {
+            grid-area: f;
+            svg {
+              transform: rotate(-50deg);
+            }
+          }
+          :nth-child(5) {
+            grid-area: i;
+          }
+          :nth-child(6) {
+            grid-area: d;
+            svg {
+              transform: rotateX(180deg) rotate(55deg);
+            }
+          }
+          :nth-child(7) {
+            grid-area: g;
+          }
+          :nth-child(8) {
+            grid-area: h;
+            svg {
+              transform: rotate(29deg);
+            }
+          }
+          :nth-child(9) {
+            grid-area: e;
+          }
         }
       }
     }
@@ -165,6 +214,12 @@
     .faq {
       padding: 0 1rem;
       margin-bottom: 1.5rem;
+      padding-bottom: 4rem;
+      @media (min-width: 600px) {
+        // padding: 0;
+        width: min(700px, 90%);
+        margin-inline: auto;
+      }
       .header {
         display: flex;
         max-width: 3rem;
@@ -173,6 +228,10 @@
       .info {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-evenly;
+        text-align: center;
+
+        align-items: center;
         gap: 2rem;
         border: 1px solid hsl(0, 0%, 100%, 0.4);
         border-radius: 0.5rem;
@@ -182,6 +241,7 @@
           display: flex;
           width: 100%;
           align-items: center;
+          justify-content: space-evenly;
         }
       }
     }
@@ -189,11 +249,27 @@
     .core {
       background: white;
       padding-bottom: 2rem;
+
       > div {
         display: flex;
         padding: 3rem;
         flex-direction: column;
         gap: 2rem;
+
+        @media (min-width: 600px) {
+          display: grid;
+          .box{
+            width: min(300px,100%);
+            margin-inline: auto;
+          }
+          grid-template-areas: 1fr 1fr;
+          gap: 6rem 2rem;
+          :last-child{
+            grid-column: span 2;
+
+          }
+          // 
+        }
       }
     }
   }

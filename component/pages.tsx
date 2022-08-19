@@ -6,7 +6,6 @@ import { motion, MotionStyle } from "framer-motion";
 import Link from "next/link";
 import Sign from "../svgs/sign";
 import { useGlobalContext } from "../context";
-import { Queen_portrait,  } from "../svgs/portrait";
 
 export const Main = ({ style }:  { style: MotionStyle }) => {
   const {state, setState} = useGlobalContext()
