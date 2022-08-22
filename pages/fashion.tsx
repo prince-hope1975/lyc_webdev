@@ -7,21 +7,87 @@ import Image, { ImageProps } from "next/image";
 import { ArDrop } from "../svgs/ArDrop";
 import Footer from "../component/Footer";
 import { BsArrowRightCircle } from "react-icons/bs";
+import { animate, motion, Variants } from "framer-motion";
+const parentVariant: Variants = {
+  initial: {
+    y: 50,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    type: "tween",
+    transition: {
+      when: "beforeChildren",
+      duration: 1,
+      staggerChildren: 0.5,
+    },
+  },
+};
 
+const childrenVariants: Variants = {
+  initial: {
+    y: 30,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+  },
+};
+const parent: Variants = {
+  initial: {},
+  animate: {
+    type: "tween",
+    transition: {
+      when: "beforeChildren",
+      duration: 1,
+      staggerChildren: 0.5,
+    },
+  },
+};
+const child: Variants = {
+  initial: {
+    x: 30,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+  },
+};
 const Fashion = () => {
   return (
     <main>
       <Navigation dontToggle />
       <div className={styles.walkingMan}>
-        <div className={styles.inner}>
-          {[...Array(5)].fill("").map((_, key) => {
-            return <WalkingMan key={key} />;
+        <motion.div
+          variants={parent}
+          initial="initial"
+          animate="animate"
+          className={styles.inner}
+        >
+          {[...Array(10)].fill("").map((_, key) => {
+            return (
+              <WalkingMan
+                variants={child}
+                className={styles.walking}
+                key={key}
+              />
+            );
           })}
-        </div>
+        </motion.div>
       </div>
-      <section className={styles.about}>
-        <span>Decentralized fashion Project</span>
-        <p>
+      <motion.section
+        variants={{ parentVariant }}
+        initial="initial"
+        animate="animate"
+        className={styles.about}
+      >
+        <motion.span variants={childrenVariants}>
+          Decentralized fashion Project
+        </motion.span>
+        <motion.p variants={childrenVariants}>
           Lzyutesclub is deeply rooted in tha fashion scene, and we try to
           represent it as much as we can. Through our project, we intend to
           contribute to the fashion world in our own unique way. With our
@@ -34,8 +100,8 @@ const Fashion = () => {
           and transforming it into a free zone for the talented, where yutes can
           create, display and connect with other talented creatives from all
           over the world.
-        </p>
-      </section>
+        </motion.p>
+      </motion.section>
 
       <section className={styles.arDrop}>
         <div className={styles.innerSection}>
