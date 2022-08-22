@@ -135,5 +135,6 @@
     flex-direction: row;
     max-width: 4rem;
     gap: 1rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
   }
 }
