@@ -41,35 +41,50 @@ const Main = ({ style }: { style?: MotionStyle }) => {
       },
     },
   };
-  // const active: Variant = {
-  //   position: "absolute",
-  //   opacity: 0,
-  //   bottom: "-100%",
-  // };  const inactive: Variant = {
-  //   position: "relative",
-  //   opacity: 0,
-  //   top:"0%",
-  // };
+
   return (
     <motion.div
-      layout
+      // layout
       className={styles.main}
       style={{ height: state ? "0" : "calc(100vh - 54px)" }}
     >
-      {!state && <Nav />}
+      <AnimatePresence>{!state && <Nav />}</AnimatePresence>
 
       <motion.section className={styles.main_section}>
         <motion.div className={styles.wrapper}>
-          <div
-            className={`${styles.home_image} ${state && styles.position}`}
+          <motion.div
+            layout
+            style={{}}
+            initial={{}}
+            animate={{
+              opacity: 1,
+              x:!state?-150:-100,
+              y: state? -250:0,
+              scale: state?.5:1
+            }}
+            transition={{type:"tween", duration:1.2}}
+            className={`${styles.home_image} ${!state && styles.position}`}
             ref={ref}
           >
             <Image priority src={"/main.png"} width={1000} height={1000} />
-          </div>
+          </motion.div>
         </motion.div>
         <AnimatePresence>
           {!state && (
             <motion.div
+              initial={{
+                y: 500,
+                opacity: 0,
+              }}
+              exit={{
+                y: 500,
+                opacity: 0,
+              }}
+              animate={{
+                y: -60,
+                opacity: 1,
+              }}
+              transition={{ duration: .8 }}
               className={styles.lzyutes_and_sign}
               style={{ paddingTop: `${!matches ? height : 0}px` }}
             >
@@ -78,10 +93,10 @@ const Main = ({ style }: { style?: MotionStyle }) => {
                 variants={variant}
                 className={styles.text}
               >
-                <Image src={"/lzyutes.svg"} width={100} height={100} />
+                <Image priority src={"/lzyutes.svg"} width={100} height={100} />
               </motion.div>
               <div className={styles.sign}>
-                <Image src={"/sign.svg"} width={100} height={300} />
+                <Image priority src={"/sign.svg"} width={100} height={300} />
                 <Link href="/fashion">
                   <motion.div whileHover={(style = { scale: 1.3 })}>
                     <Fashion />

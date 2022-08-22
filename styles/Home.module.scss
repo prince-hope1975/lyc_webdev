@@ -1,6 +1,6 @@
 .main {
   width: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   @media (min-width: 600px) {
     // height: min(500px, calc(100vh - 54px));
   }
@@ -23,23 +23,11 @@
       left: 50%;
       transform: translateX(-50%);
       width: min(100%, 300px);
+    }
+    .position {
       @media (min-width: 600px) {
         width: min(50%, 500px);
         left: 25%;
-        // top: 50%;
-      }
-    }
-    .position {
-      position: absolute;
-      bottom: -2%;
-      right: 14%;
-      width: 9rem;
-      transform: translate(0%);
-      @media (min-width: 600px) {
-        aspect-ratio: 1;
-        left: 50%;
-        top: 67%;
-        transform: translateX(-1.5rem);
       }
     }
     .lzyutes_and_sign {

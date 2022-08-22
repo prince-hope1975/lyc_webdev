@@ -104,10 +104,10 @@ const Submit = () => {
             <SpeechBoxR className={styles.box} text="Enter unique PassCode" />
             <motion.form>
               <div className={styles.img1}>
-                <Image src={"/her.png"} width={300} height={500} />
+                <Image priority src={"/her.png"} width={300} height={500} />
               </div>
               <div className={styles.img2}>
-                <Image src={"/her.png"} width={500} height={500} />
+                <Image priority src={"/her.png"} width={500} height={500} />
               </div>
               <div className={styles.input}>
                 <input
@@ -140,10 +140,10 @@ const Submit = () => {
               text="Enter Ethereum wallet address"
             />
             <div className={styles.img1}>
-              <Image src={"/her.png"} width={300} height={500} />
+              <Image priority src={"/her.png"} width={300} height={500} />
             </div>
             <div className={styles.img2}>
-              <Image src={"/her.png"} width={500} height={500} />
+              <Image priority src={"/her.png"} width={500} height={500} />
             </div>
             <div className={styles.input}>
               <input

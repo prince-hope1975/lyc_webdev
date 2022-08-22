@@ -11,7 +11,8 @@
   }
   .modal {
     width: clamp(250px, 50vw, 50vw);
-    max-height: fit-content;
+    // max-height: fit-content;
+    font-family: var(--chewy);
     align-self: flex-end;
     padding: 0 0.5rem;
     list-style: none;
@@ -31,12 +32,12 @@
     }
   }
 
-  .toggle {
-    max-height: 0px;
-    overflow: hidden;
-    border: none;
-    transition: max-height 500ms ease-in-out;
-  }
+  // .toggle {
+  //   // max-height: 0px;
+  //   overflow: hidden;
+  //   border: none;
+  //   transition: max-height 500ms ease-in-out;
+  // }
   svg {
     cursor: pointer;
   }
@@ -87,14 +88,15 @@
       h2 {
         padding: 0;
         padding-top: 3rem;
-        font-size: 1.2rem;
+        font-size: clamp(1.1rem, calc(3.5vw + 1px), 2rem);
         text-align: center;
+        font-family: var(--chewy);
       }
       p {
         padding: 0 2rem;
         font-weight: 300;
-        font-size: 0.89rem;
-        line-height: 1.35rem;
+        font-size: clamp(0.5rem,calc( 3vw + 1px), .85rem);
+        line-height: 1.2rem;
       }
       .mint {
         position: absolute;
