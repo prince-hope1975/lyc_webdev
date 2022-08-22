@@ -56,8 +56,10 @@
   }
 
   .main {
-
+    overflow-x: hidden;
     .images {
+    overflow: hidden;
+
       position: relative;
       width: 100%;
       max-height: 100%;

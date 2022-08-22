@@ -9,6 +9,7 @@
 
   & > section,
   .main_section {
+    overflow-x: hidden;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(231px, 1fr));
@@ -33,6 +34,7 @@
     .lzyutes_and_sign {
       width: 100%;
       flex-direction: column;
+      overflow: hidden;
 
       transform: translateY(-2.3rem);
 

@@ -61,7 +61,7 @@ const variant:Variants={
         >
           <div className={styles.images}>
             {state && (
-              <motion.div  transition={{type:"tween", duration:1}} variants={variant} initial="initial" animate="animate" exit="initial" className={styles.woman}>
+              <motion.div layout  transition={{type:"tween", duration:1}} variants={variant} initial="initial" animate="animate" exit="initial" className={styles.woman}>
                 <Image
                   src={"/qween.png"}
                   priority
