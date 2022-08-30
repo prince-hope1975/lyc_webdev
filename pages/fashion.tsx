@@ -57,6 +57,7 @@ const child: Variants = {
   },
 };
 const Fashion = () => {
+  if(true)return <></>
   return (
     <main>
       <Navigation dontToggle />

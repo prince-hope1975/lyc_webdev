@@ -24,7 +24,6 @@ import {
 
 import { FaQ, RightArror } from "../svgs/faq";
 
-import { Lazy, Sign } from "../svgs/footer.Svgs";
 const times = 1.2;
 const Home: NextPage = () => {
   const { state, setState } = useGlobalContext();

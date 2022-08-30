@@ -51,18 +51,18 @@ const Main = ({ style }: { style?: MotionStyle }) => {
       <AnimatePresence>{!state && <Nav />}</AnimatePresence>
 
       <motion.section className={styles.main_section}>
-        <motion.div className={styles.wrapper}>
+        <motion.div className={styles.wrapper} >
           <motion.div
             layout
             style={{}}
             initial={{}}
             animate={{
               opacity: 1,
-              x:!state?-150:-100,
-              y: state? -250:0,
-              scale: state?.5:1
+              x: !state ? -150 : -100,
+              y: state ? -250 : 0,
+              scale: state ? 0.5 : 1,
             }}
-            transition={{type:"tween", duration:1.2}}
+            transition={{ type: "tween", duration: 1.2 }}
             className={`${styles.home_image} ${!state && styles.position}`}
             ref={ref}
           >
@@ -84,7 +84,7 @@ const Main = ({ style }: { style?: MotionStyle }) => {
                 y: -60,
                 opacity: 1,
               }}
-              transition={{ duration: .8 }}
+              transition={{ duration: 0.8 }}
               className={styles.lzyutes_and_sign}
               style={{ paddingTop: `${!matches ? height : 0}px` }}
             >
@@ -96,15 +96,20 @@ const Main = ({ style }: { style?: MotionStyle }) => {
                 <Image priority src={"/lzyutes.svg"} width={100} height={100} />
               </motion.div>
               <div className={styles.sign}>
-                <Image priority src={"/sign.svg"} width={100} height={300} />
-                <Link href="/fashion">
+                <Image priority src={"/sign.png"} width={100} height={300} />
+                {/* !TODO Original link  */}
+                {/* <Link href="/fashion"> */}
+                <Link href="/">
                   <motion.div whileHover={(style = { scale: 1.3 })}>
                     <Fashion />
                   </motion.div>
                 </Link>
                 <motion.div
                   /* @ts-ignore */
-                  onClick={() => setState(!state)}
+                  onClick={() => setState(state)}
+                  // TODO - original action
+                  // This action was disabled along with line 101 because of the requiremnts of the app
+                  // onClick={() => setState(!state)}
                   whileHover={(style = { scale: 1.3 })}
                 >
                   <LZYutes />
