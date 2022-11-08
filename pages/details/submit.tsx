@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { FormEvent, ReactElement, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue, get, child } from "firebase/database";
 import Image from "next/image";
@@ -28,11 +28,30 @@ const Submit = () => {
     "password" as "password" | "address" | "finish"
   );
   const [addr, setAddr] = useState("");
-  const handleSubmit = async (e: Event) => {
+  const fetchResult = async (
+    pass: string
+  ): Promise<{ data: boolean; address: string | null }> => {
+    const ans: { data: boolean; address: string | null } = await fetch(
+      "/api/verify/",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          password: pass,
+        }),
+      }
+    ).then((res) => res.json());
+
+    return ans;
+  };
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const val = await fetchDb(pwd);
+    if (!pwd) return alert("Field cannot be empty");
+    // const val = await fetchDb(pwd);
+    const val = await fetchResult(pwd);
+
     if (val) {
       // 1AF5n
+      if (!val.data) return alert(`Address not accepted:  ${pwd}`);
       if (val.address) {
         alert("You have already submitted your address");
         return;
@@ -43,7 +62,7 @@ const Submit = () => {
     } else {
       alert(`You entered a Wrong Password:  ${pwd}`);
     }
-    console.log({ val, pwd });
+    console.log({ val, pwd: pwd.toUpperCase() });
   };
 
   const handleAddress = async (e: any) => {
@@ -113,11 +132,13 @@ const Submit = () => {
                 <input
                   type="password"
                   placeholder="Enter"
+                  required
                   value={pwd}
+                  pattern="^(?=.*[A-Z].*[A-Z])(?=.*[0-9].*[0-9]).{5}$"
                   onChange={(e) => setPwd(e.target.value)}
                 />
-                {/* @ts-ignore */}
                 <motion.input type="submit" onClick={handleSubmit} />
+                {/* @ts-ignore */}
               </div>
             </motion.form>
           </motion.div>
@@ -150,6 +171,7 @@ const Submit = () => {
                 type="text"
                 placeholder="Enter"
                 onChange={(e) => setAddr(e.target.value)}
+                required
                 style={{ minWidth: "10rem" }}
               />
               <input onClick={(e) => handleAddress(e)} type="submit" />
@@ -179,7 +201,6 @@ async function fetchDb(item: string) {
     const snapshot = await get(child(dbRef, `users/${item}`));
 
     if (snapshot.exists()) {
-      // console.log(snapshot.val());
       console.log("Password doesn't exist");
     } else {
       console.log("No data available");
