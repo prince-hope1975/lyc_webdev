@@ -134,7 +134,7 @@ const Submit = () => {
                   placeholder="Enter"
                   required
                   value={pwd}
-                  pattern="^(?=.*[A-Z].*[A-Z])(?=.*[0-9].*[0-9]).{5}$"
+                  pattern="^(?=.*[A-Z].*[A-Z])(?=.*[0-9]).{5}$"
                   onChange={(e) => setPwd(e.target.value)}
                 />
                 <motion.input type="submit" onClick={handleSubmit} />
