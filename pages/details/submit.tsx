@@ -62,17 +62,26 @@ const Submit = () => {
     } else {
       alert(`You entered a Wrong Password:  ${pwd}`);
     }
-    console.log({ val, pwd: pwd.toUpperCase() });
+    // console.log({ val, pwd: pwd.toUpperCase() });
   };
 
   const handleAddress = async (e: any) => {
     e.preventDefault();
     // setAddr(e.target["address"].value);
     try {
-      const data = await writeToDb(pwd, addr);
-      setView("address");
+      const db: { address: string; password: string }[] = Object.values(
+        await fetchDb()
+      );
+      const item = db?.find(
+        (item) => item.password.toUpperCase() == pwd.toUpperCase()
+      );
+
+      if (!item?.password) return alert("Something went wrong");
+      const data = await writeToDb(item?.password, addr);
+      setView("finish");
     } catch (error) {
       console.error(error);
+      alert("Something went wrong");
     }
   };
 
@@ -186,6 +195,15 @@ const Submit = () => {
             initial="initial"
             animate="animate"
             exit="exit"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "max(100vh)",
+              width: "100%",
+              fontSize:"1.5rem"
+            }}
           >
             Successfully Submitted address 🥳️🎉️
           </motion.div>
@@ -194,17 +212,17 @@ const Submit = () => {
     </div>
   );
 };
-async function fetchDb(item: string) {
+async function fetchDb(item: string = "") {
   try {
     const db = getDatabase(app);
     const dbRef = ref(db);
     const snapshot = await get(child(dbRef, `users/${item}`));
 
-    if (snapshot.exists()) {
-      console.log("Password doesn't exist");
-    } else {
-      console.log("No data available");
-    }
+    // if (snapshot.exists()) {
+    //   console.log("Password exist");
+    // } else {
+    //   console.log("No data available");
+    // }
     return snapshot.val();
   } catch (e) {
     console.log(e);
@@ -212,16 +230,6 @@ async function fetchDb(item: string) {
   }
 }
 
-export async function writeToDb(hex: string, address: string) {
-  const db = getDatabase();
-  set(ref(db, "users/" + hex), {
-    password: hex,
-    address: address,
-  }).then((res) => {
-    console.log("server response", res);
-    return res;
-  });
-}
 const firebaseConfig = {
   apiKey: "AIzaSyC_vGP1PPx69AxTPNB-d7y-cHdXJIqAAi0",
   authDomain: "firebsase-demo.firebaseapp.com",
@@ -235,4 +243,17 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 
+export async function writeToDb(hex: string, address: string) {
+  const db = getDatabase(app);
+
+  // console.log("Writing to db", hex, address);
+
+  set(ref(db, "users/" + hex), {
+    password: hex,
+    address: address,
+  }).then((res) => {
+    console.log("server response", res);
+    return res;
+  });
+}
 export default Submit;
